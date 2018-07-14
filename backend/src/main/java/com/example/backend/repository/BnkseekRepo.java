@@ -19,4 +19,8 @@ public interface BnkseekRepo {
     void delete(String vkey);
 
     void addBnkseekOnFile(Map map);
+
+    Bnkseek getByVkey(String vkey);
+
+    void editBnkseek(Bnkseek bnkseek, String vkey);
 }

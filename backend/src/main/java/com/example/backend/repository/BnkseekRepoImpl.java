@@ -122,7 +122,7 @@ public class BnkseekRepoImpl implements BnkseekRepo {
     public void delete(String vkey) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("vkey", vkey);
-        jdbcTemplate.update("delete from bnkseek where vkey =:vkey", param);
+        jdbcTemplate.update("delete from bnkseek where vkey = :vkey", param);
     }
 
     @Override
@@ -131,7 +131,45 @@ public class BnkseekRepoImpl implements BnkseekRepo {
                 " namen, newks, permfo, srok, at1, at2, telef, regn, okpo, dt_izm, cks, kznp, date_in, date_ch, " +
                 "vkeydel, dt_izmr, newnum)\n" +
                 "    values (:vkey,:real, :pzn, :uer, :rgn, :ind, :tnp, :nnp, :adr, :rkc, :namep, :namen, :newks," +
-                " :permfo, :srok,:at1, :at2, :telef, :regn, :okpo, :dt_izm, :cks, :kznp, :date_in, :date_ch," +
+                " :permfo, :srok, :at1, :at2, :telef, :regn, :okpo, :dt_izm, :cks, :kznp, :date_in, :date_ch," +
                 " :vkeydel, :dt_izmr, :newnum)", map);
+    }
+
+    @Override
+    public Bnkseek getByVkey(String vkey) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("vkey",vkey);
+        return jdbcTemplate.queryForObject(sqlSelect+ " where b.vkey = :vkey",param,bnkseekRowMapper);
+    }
+
+    @Override
+    public void editBnkseek(Bnkseek bnkseek, String vkey) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        bnkseek.setDtIzm(new Date());
+        param.put("vkey", vkey);
+        param.put("real", bnkseek.getReal());
+        param.put("pzn", bnkseek.getPzn());
+        param.put("uer", bnkseek.getUer());
+        param.put("rgn", bnkseek.getRgn());
+        param.put("ind", bnkseek.getInd());
+        param.put("tnp", bnkseek.getTnp());
+        param.put("nnp", bnkseek.getNnp());
+        param.put("adr", bnkseek.getAdr());
+        param.put("rkc", bnkseek.getRkc());
+        param.put("namep", bnkseek.getNamep());
+        param.put("namen", bnkseek.getNamen());
+        param.put("srok", bnkseek.getSrok());
+        param.put("telef", bnkseek.getTelef());
+        param.put("regn", bnkseek.getRegn());
+        param.put("okpo", bnkseek.getOkpo());
+        param.put("dt_izm", bnkseek.getDtIzm());
+        param.put("kznp", bnkseek.getKznp());
+        param.put("date_ch", bnkseek.getDateCh());
+        param.put("newnum", bnkseek.getNewnum());
+        jdbcTemplate.update("update bnkseek set real = :real, pzn = :pzn, uer = :uer, rgn = :rgn, ind = :ind," +
+                " tnp = :tnp, nnp = :nnp, adr = :adr, rkc = :rkc, namep = :namep, namen = :namen, srok = :srok, " +
+                "telef = :telef, regn = :regn, okpo = :okpo, dt_izm = :dt_izm, kznp = :kznp, date_ch = :date_ch, " +
+                "newnum = :newnum where bnkseek.vkey = :vkey", param);
+
     }
 }

@@ -80,5 +80,15 @@ public class BnkseekServiceImpl implements BnkseekService {
             e.getMessage();
         }
     }
+
+    @Override
+    public Bnkseek getByVkey(String vkey) {
+        return bnkseekRepo.getByVkey(vkey);
+    }
+
+    @Override
+    public void editBnkseek(Bnkseek bnkseek, String vkey) {
+        bnkseekRepo.editBnkseek(bnkseek,vkey);
+    }
 }
 

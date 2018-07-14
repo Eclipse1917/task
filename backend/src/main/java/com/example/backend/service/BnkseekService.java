@@ -20,4 +20,8 @@ public interface BnkseekService {
     void delete(String vkey);
 
     void uploadFile(File uploadFile);
+
+    Bnkseek getByVkey(String vkey);
+
+    void editBnkseek(Bnkseek bnkseek, String vkey);
 }
