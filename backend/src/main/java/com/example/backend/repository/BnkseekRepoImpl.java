@@ -1,6 +1,7 @@
 package com.example.backend.repository;
 
 import com.example.backend.domain.*;
+import com.example.backend.exception.BnkseekNotFound;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -62,7 +63,13 @@ public class BnkseekRepoImpl implements BnkseekRepo {
     public Bnkseek findByVkey(String vkey) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("vkey", vkey);
-        return jdbcTemplate.queryForObject(sqlSelect + " where b.vkey = :vkey", param, bnkseekRowMapper);
+        Bnkseek bnkseek;
+        try {
+            bnkseek = jdbcTemplate.queryForObject(sqlSelect + " where b.vkey = :vkey", param, bnkseekRowMapper);
+        } catch (Exception e) {
+            throw new BnkseekNotFound("Bank not found by vkey: " + vkey);
+        }
+        return bnkseek;
     }
 
     @Override
