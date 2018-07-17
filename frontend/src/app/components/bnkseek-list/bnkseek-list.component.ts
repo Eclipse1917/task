@@ -20,7 +20,6 @@ export class BnkseekListComponent implements OnInit {
   constructor(private bnkSeekService: BnkSeekService) {
   }
 
-
   ngOnInit() {
     this.load();
   }
@@ -37,7 +36,6 @@ export class BnkseekListComponent implements OnInit {
         );
     }
     else {
-
       this.bnkSeekService.search(this.valuePzn, this.selectValue)
         .subscribe(data => this.shortBnkSeek = data,
           error => console.log(error)

@@ -15,7 +15,7 @@ public interface BnkseekService {
 
     List<Bnkseek> findByPzn(String pzn);
 
-    void addbnkseek(Bnkseek bnkseek);
+    void addBnkseek(Bnkseek bnkseek);
 
     void delete(String vkey);
 

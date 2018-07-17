@@ -1,6 +1,6 @@
 export class FullBnkSeek {
   constructor(
-    public   vkey: string,
+    public vkey: string,
     public real: string,
     public pzn: string,
     public uer: string,
@@ -17,8 +17,8 @@ export class FullBnkSeek {
     public srok: string,
     public at1: string,
     public at2: string,
-    public  telef: string,
-    public  regn: string,
+    public telef: string,
+    public regn: string,
     public okpo: string,
     public dtIzm: string,
     public cks: string,

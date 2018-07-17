@@ -135,7 +135,7 @@
               </div>
               <div class="input-field col s12">
                 <i class="material-icons "></i>
-                <input placeholder="DT_IZM" id="DT_IZM" name="DT_IZM" type="date" required disabled
+                <input placeholder="DT_IZM" id="DT_IZM" name="DT_IZM" type="date" disabled
                        [(ngModel)]="fullBnkSeek.dtIzm">
                 <label for="DT_IZM">DT_IZM</label>
               </div>
@@ -201,5 +201,5 @@
   </div>
 </div>
 
-<app-bnksee-remove-modal #modalRemove (delete)="onCancel()"></app-bnksee-remove-modal>
+<app-bnksee-remove-modal #modalRemove (delete)="closeOnDelete()"></app-bnksee-remove-modal>
 

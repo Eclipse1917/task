@@ -4,7 +4,6 @@ import {HttpResponse} from "@angular/common/http";
 
 declare const $: any;
 
-
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
@@ -51,7 +50,6 @@ export class UploadFileComponent implements OnInit {
   onCancel() {
     this.close();
   }
-
 
   private show() {
     $('#upload_modal').modal('open');

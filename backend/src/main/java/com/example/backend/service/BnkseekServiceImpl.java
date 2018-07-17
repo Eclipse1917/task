@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.domain.*;
+import com.example.backend.exception.ReadFileException;
 import com.example.backend.repository.BnkseekRepo;
 import org.jamel.dbf.DbfReader;
 import org.jamel.dbf.structure.DbfRow;
@@ -9,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.charset.Charset;
@@ -46,7 +46,7 @@ public class BnkseekServiceImpl implements BnkseekService {
     }
 
     @Override
-    public void addbnkseek(Bnkseek bnkseek) {
+    public void addBnkseek(Bnkseek bnkseek) {
         bnkseekRepo.addBnkseek(bnkseek);
     }
 
@@ -70,7 +70,6 @@ public class BnkseekServiceImpl implements BnkseekService {
                 DbfRow row = reader.nextRow();
                 Map map = new HashMap();
                 for (int j = 0; j < reader.getHeader().getFieldsCount(); j++) {
-
                     if (reader.getHeader().getField(j).getDataType().byteValue == 67) {
                         if (row.getString(reader.getHeader().getField(j).getName()).trim().length() == 0) {
                             map.put(reader.getHeader().getField(j).getName().toLowerCase(), null);
@@ -83,23 +82,19 @@ public class BnkseekServiceImpl implements BnkseekService {
                         } else {
                             map.put(reader.getHeader().getField(j).getName().toLowerCase(), null);
                         }
-
                     }
                 }
                 bnkseekRepo.addBnkseekOnFile(map);
-
             }
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new ReadFileException(e.getMessage());
         }
     }
 
-
-
     @Override
     public void editBnkseek(Bnkseek bnkseek, String vkey) {
-        bnkseekRepo.editBnkseek(bnkseek,vkey);
+        bnkseekRepo.editBnkseek(bnkseek, vkey);
     }
 
     @Override

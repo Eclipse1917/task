@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.net.URLDecoder;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,14 +23,13 @@ public class RestControllerBnkseek {
 
     @GetMapping
     @JsonView(View.ShortBnkseek.class)
-    public List<Bnkseek> getAll(){
+    public List<Bnkseek> getAll() {
         return bnkseekService.getAll();
     }
 
-
     @PutMapping("/{vkey}")
-    public void editBnkseek(@RequestBody Bnkseek bnkseek, @PathVariable String vkey){
-        bnkseekService.editBnkseek(bnkseek,vkey);
+    public void editBnkseek(@RequestBody @Valid Bnkseek bnkseek, @PathVariable String vkey) {
+        bnkseekService.editBnkseek(bnkseek, vkey);
     }
 
     @GetMapping("/{vkey}")
@@ -41,13 +40,13 @@ public class RestControllerBnkseek {
 
     @GetMapping("/rgn")
     @JsonView(View.ShortBnkseek.class)
-    public List<Bnkseek> findByRgn(@RequestParam String rgn){
+    public List<Bnkseek> findByRgn(@RequestParam String rgn) {
         return bnkseekService.findByRgn(rgn);
     }
 
     @GetMapping("/pzn")
     @JsonView(View.ShortBnkseek.class)
-    public List<Bnkseek> findByPzn(@RequestParam String pzn){
+    public List<Bnkseek> findByPzn(@RequestParam String pzn) {
         return bnkseekService.findByPzn(pzn);
     }
 
@@ -58,12 +57,12 @@ public class RestControllerBnkseek {
     }
 
     @PostMapping
-    public void addbnkseek(@RequestBody Bnkseek bnkseek){
-        bnkseekService.addbnkseek(bnkseek);
+    public void addBnkseek(@RequestBody @Valid Bnkseek bnkseek) {
+        bnkseekService.addBnkseek(bnkseek);
     }
 
     @DeleteMapping("/{vkey}")
-    public void deleteBnkseek(@PathVariable String vkey){
+    public void deleteBnkseek(@PathVariable String vkey) {
         bnkseekService.delete(vkey);
     }
 

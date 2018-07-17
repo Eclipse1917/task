@@ -34,7 +34,6 @@
             <div class="col s12">
               <div id="student_list" class="field col s12">
                 <ul class="collection">
-
                   <li class="collection-item"
                       *ngFor="let bk of shortBnkSeek | paginate: {itemsPerPage: 10, currentPage: p}">
                     <a href="#" (click)="modal.onEdit(bk.vkey)">
@@ -50,13 +49,10 @@
     </div>
   </div>
 </div>
-
-
 <button type="submit" (click)="modal.onAdd()"
         class="c-fix-tab btn-floating btn-large waves-effect waves-light btn">
   <i class="material-icons">add</i>
 </button>
-
 
 <app-bnksee-edit-modal #modal (save)="onLoad()"></app-bnksee-edit-modal>
 <app-upload-file #upload_modal (save)="onLoad()"></app-upload-file>

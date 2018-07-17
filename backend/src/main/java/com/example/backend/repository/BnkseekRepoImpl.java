@@ -48,16 +48,14 @@ public class BnkseekRepoImpl implements BnkseekRepo {
                 rs.getDate("date_ch"),
                 rs.getString("vkeydel"),
                 rs.getDate("dt_izmr"),
-                rs.getString("newnum")
-        ));
+                rs.getString("newnum")));
     }
 
     @Override
     public List<Bnkseek> getAll() {
         return jdbcTemplate.query(
                 sqlSelect + " order by b.vkey",
-                bnkseekRowMapper
-        );
+                bnkseekRowMapper);
     }
 
     @Override
@@ -130,7 +128,6 @@ public class BnkseekRepoImpl implements BnkseekRepo {
                 " :vkeydel, :dt_izmr, :newnum) on conflict (vkey) do nothing", map);
     }
 
-
     @Override
     public void editBnkseek(Bnkseek bnkseek, String vkey) {
         Map<String, Object> param = new HashMap<String, Object>();
@@ -159,7 +156,6 @@ public class BnkseekRepoImpl implements BnkseekRepo {
                 " tnp = :tnp, nnp = :nnp, adr = :adr, rkc = :rkc, namep = :namep, namen = :namen, srok = :srok, " +
                 "telef = :telef, regn = :regn, okpo = :okpo, dt_izm = :dt_izm, ksnp = :ksnp, date_ch = :date_ch, " +
                 "newnum = :newnum where bnkseek.vkey = :vkey", param);
-
     }
 
     @Override
@@ -167,32 +163,28 @@ public class BnkseekRepoImpl implements BnkseekRepo {
 
         return jdbcTemplate.query("select pzn,name from pzn ", (rs, rowNum) -> new Pzn(
                 rs.getString("pzn"),
-                rs.getString("name")
-        ));
+                rs.getString("name")));
     }
 
     @Override
     public List<Reg> getREG() {
         return jdbcTemplate.query("select rgn,name from reg ", (rs, rowNum) -> new Reg(
                 rs.getString("rgn"),
-                rs.getString("name")
-        ));
+                rs.getString("name")));
     }
 
     @Override
     public List<Tnp> getTNP() {
         return jdbcTemplate.query("select tnp,fullname from tnp ", (rs, rowNum) -> new Tnp(
                 rs.getString("tnp"),
-                rs.getString("fullname")
-        ));
+                rs.getString("fullname")));
     }
 
     @Override
     public List<Uer> getUER() {
         return jdbcTemplate.query("select uer,uername from uer ", (rs, rowNum) -> new Uer(
                 rs.getString("uer"),
-                rs.getString("uername")
-        ));
+                rs.getString("uername")));
     }
 
     @Override

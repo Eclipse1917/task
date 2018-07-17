@@ -6,6 +6,7 @@ import {Pzn} from "../../domain/pzn";
 import {Reg} from "../../domain/reg";
 import {Uer} from "../../domain/uer";
 import {Tnp} from "../../domain/tnp";
+import {BnkseekListComponent} from "../bnkseek-list/bnkseek-list.component";
 
 declare const $: any;
 
@@ -23,8 +24,7 @@ export class BnkseeEditModalComponent implements OnInit {
   tnp: Tnp[] = [];
   reg: Reg[] = [];
 
-
-  constructor(private bnkseekService: BnkSeekService) {
+  constructor(private bnkseekService: BnkSeekService, private bnkListComp: BnkseekListComponent) {
     this.clear();
   }
 
@@ -36,22 +36,21 @@ export class BnkseeEditModalComponent implements OnInit {
         }
       );
     });
+  }
 
+  closeOnDelete() {
+    this.onCancel();
+    this.bnkListComp.onLoad();
   }
 
   onAdd() {
     this.clear();
+    this.getAllSelect();
     this.addElements();
     this.show();
   }
 
-  onEdit(vkey: string) {
-    this.bnkseekService.getBnkSeekByVkey(encodeURIComponent(vkey)).subscribe(
-      data => {
-        this.fullBnkSeek = data;
-      },
-      error => console.log(error)
-    );
+  getAllSelect() {
     this.bnkseekService.getPzn().subscribe(
       data => {
         this.pzn = data;
@@ -76,12 +75,21 @@ export class BnkseeEditModalComponent implements OnInit {
       },
       error => console.log(error)
     );
-    this.editElements();
-    this.show();
-
   }
 
-  addElements() {
+  onEdit(vkey: string) {
+    this.bnkseekService.getBnkSeekByVkey(encodeURIComponent(vkey)).subscribe(
+      data => {
+        this.fullBnkSeek = data;
+      },
+      error => console.log(error)
+    );
+    this.getAllSelect();
+    this.editElements();
+    this.show();
+  }
+
+  editElements() {
     $("#DATE_IN").parent().show();
     $("#DT_IZM").parent().show();
     $("#NAMEN").parent().hide();
@@ -93,10 +101,10 @@ export class BnkseeEditModalComponent implements OnInit {
     $("#CKS").parent().hide();
     $("#VKEYDEL").parent().hide();
     $("#DA_IZMR").parent().hide();
-    $("#delete").hide();
+    $("#delete").show();
   }
 
-  editElements() {
+  addElements() {
     $("#DATE_IN").parent().hide();
     $("#DT_IZM").parent().hide();
     $("#NAMEN").parent().show();
@@ -108,7 +116,7 @@ export class BnkseeEditModalComponent implements OnInit {
     $("#CKS").parent().show();
     $("#VKEYDEL").parent().show();
     $("#DA_IZMR").parent().show();
-    $("#delete").show();
+    $("#delete").hide();
   }
 
   onSave() {
@@ -136,13 +144,11 @@ export class BnkseeEditModalComponent implements OnInit {
     }
   }
 
-
   onCancel() {
     this.clear();
     this.close();
     this.reset();
   }
-
 
   private clear() {
     this.fullBnkSeek = new FullBnkSeek('', '', '', '', '', '', '', '', '',

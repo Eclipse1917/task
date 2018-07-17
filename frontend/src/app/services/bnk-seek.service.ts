@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpEvent, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpEvent} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {ShortBnkSeek} from "../domain/short-bnk-seek";
 import {environment} from "../../environments/environment";
@@ -66,7 +66,6 @@ export class BnkSeekService {
         observe: 'response'
       }
     );
-
   }
 
   upload(file: File): Observable<HttpEvent<{}>> {

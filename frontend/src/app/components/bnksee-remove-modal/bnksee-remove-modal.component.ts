@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BnkSeekService} from "../../services/bnk-seek.service";
-import {ShortBnkSeek} from "../../domain/short-bnk-seek";
 import {FullBnkSeek} from "../../domain/full-bnk-seek";
 
 declare const $: any;
@@ -31,7 +30,6 @@ export class BnkseeRemoveModalComponent implements OnInit {
   onRemove(bnkSeek: FullBnkSeek) {
     this.bnkSeek = bnkSeek;
     this.show();
-
   }
 
   onDelete() {
@@ -42,9 +40,7 @@ export class BnkseeRemoveModalComponent implements OnInit {
       },
       error => console.log(error)
     );
-
   }
-
 
   onCancel() {
     this.close();
@@ -53,7 +49,6 @@ export class BnkseeRemoveModalComponent implements OnInit {
   private close() {
     $('#BnkseekRemoveModal').modal('close');
   }
-
 
   private show() {
     $('#BnkseekRemoveModal').modal('open');

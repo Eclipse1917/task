@@ -20,7 +20,6 @@ public interface BnkseekRepo {
 
     void addBnkseekOnFile(Map map);
 
-
     void editBnkseek(Bnkseek bnkseek, String vkey);
 
     List<Pzn> getPZN();
