@@ -1,6 +1,6 @@
 package com.example.backend.repository;
 
-import com.example.backend.domain.Bnkseek;
+import com.example.backend.domain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import java.util.Map;
 public interface BnkseekRepo {
     List<Bnkseek> getAll();
 
-    List<Bnkseek> findByBic(String bic);
+    Bnkseek findByVkey(String vkey);
 
     List<Bnkseek> findByRgn(String rgn);
 
@@ -20,7 +20,16 @@ public interface BnkseekRepo {
 
     void addBnkseekOnFile(Map map);
 
-    Bnkseek getByVkey(String vkey);
 
     void editBnkseek(Bnkseek bnkseek, String vkey);
+
+    List<Pzn> getPZN();
+
+    List<Reg> getREG();
+
+    List<Tnp> getTNP();
+
+    List<Uer> getUER();
+
+    List<Bnkseek> findByNewnum(String newnum);
 }

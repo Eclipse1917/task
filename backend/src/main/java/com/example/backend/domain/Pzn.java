@@ -10,8 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pzn {
-    private String vkey;
     private String pzn;
-     String name;
+    private String name;
 
 }

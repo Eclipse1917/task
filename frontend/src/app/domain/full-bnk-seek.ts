@@ -1,0 +1,32 @@
+export class FullBnkSeek {
+  constructor(
+    public   vkey: string,
+    public real: string,
+    public pzn: string,
+    public uer: string,
+    public rgn: string,
+    public ind: string,
+    public tnp: string,
+    public nnp: string,
+    public adr: string,
+    public rkc: string,
+    public namep: string,
+    public namen: string,
+    public newks: string,
+    public permfo: string,
+    public srok: string,
+    public at1: string,
+    public at2: string,
+    public  telef: string,
+    public  regn: string,
+    public okpo: string,
+    public dtIzm: string,
+    public cks: string,
+    public ksnp: string,
+    public dateIn: string,
+    public dateCh: string,
+    public vkeydel: string,
+    public dtIzmr: string,
+    public newnum: string) {
+  }
+}

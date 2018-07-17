@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Uer {
-    private String vkey;
-    private String eur;
-    private String eurName;
+    private String uer;
+    private String uerName;
 
 }

@@ -1,14 +1,13 @@
 package com.example.backend.controller;
 
-import com.example.backend.domain.Bnkseek;
+import com.example.backend.domain.*;
 import com.example.backend.jsonView.View;
 import com.example.backend.service.BnkseekService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.List;
 
 @RestController
@@ -28,33 +27,34 @@ public class RestControllerBnkseek {
         return bnkseekService.getAll();
     }
 
-    @GetMapping("/{vkey}")
-    @JsonView(View.FullBnkseek.class)
-    public Bnkseek getByVkey(@PathVariable String vkey){
-        return bnkseekService.getByVkey(vkey);
-    }
 
     @PutMapping("/{vkey}")
     public void editBnkseek(@RequestBody Bnkseek bnkseek, @PathVariable String vkey){
         bnkseekService.editBnkseek(bnkseek,vkey);
     }
 
-    @GetMapping(path = "bic")
-    @JsonView(View.ShortBnkseek.class)
-    public List<Bnkseek> findByBic(@RequestParam String bic){
-        return bnkseekService.findByBic(bic);
+    @GetMapping("/{vkey}")
+    @JsonView(View.FullBnkseek.class)
+    public Bnkseek findByVkey(@PathVariable String vkey) {
+        return bnkseekService.findByVkey(vkey);
     }
 
-    @GetMapping(path = "rgn")
+    @GetMapping("/rgn")
     @JsonView(View.ShortBnkseek.class)
     public List<Bnkseek> findByRgn(@RequestParam String rgn){
         return bnkseekService.findByRgn(rgn);
     }
 
-    @GetMapping(path = "pzn")
+    @GetMapping("/pzn")
     @JsonView(View.ShortBnkseek.class)
     public List<Bnkseek> findByPzn(@RequestParam String pzn){
         return bnkseekService.findByPzn(pzn);
+    }
+
+    @GetMapping("/newnum")
+    @JsonView(View.ShortBnkseek.class)
+    public List<Bnkseek> findByNewnum(@RequestParam String newnum) {
+        return bnkseekService.findByNewnum(newnum);
     }
 
     @PostMapping
@@ -66,10 +66,32 @@ public class RestControllerBnkseek {
     public void deleteBnkseek(@PathVariable String vkey){
         bnkseekService.delete(vkey);
     }
+
     @PostMapping("/upload")
-    public void uploadPhoto(@RequestParam File uploadFile) {
-        if (!(uploadFile.length() == 0)) {
-            bnkseekService.uploadFile(uploadFile);
+    public void uploadFile(@RequestParam MultipartFile file) {
+        if (!file.isEmpty()) {
+            bnkseekService.uploadFile(file);
         }
     }
+
+    @GetMapping("/getPzn")
+    public List<Pzn> getPZN() {
+        return bnkseekService.getPZN();
+    }
+
+    @GetMapping("/getReg")
+    public List<Reg> getREG() {
+        return bnkseekService.getREG();
+    }
+
+    @GetMapping("/getTnp")
+    public List<Tnp> getTNP() {
+        return bnkseekService.getTNP();
+    }
+
+    @GetMapping("/getUer")
+    public List<Uer> getUER() {
+        return bnkseekService.getUER();
+    }
+
 }

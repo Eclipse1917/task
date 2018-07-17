@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Tnp {
-    private String vkey;
     private String tnp;
     private String fullName;
 }

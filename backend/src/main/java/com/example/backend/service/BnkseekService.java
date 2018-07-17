@@ -1,6 +1,6 @@
 package com.example.backend.service;
 
-import com.example.backend.domain.Bnkseek;
+import com.example.backend.domain.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -9,7 +9,7 @@ import java.util.List;
 public interface BnkseekService {
     List<Bnkseek> getAll();
 
-    List<Bnkseek> findByBic(String bic);
+    Bnkseek findByVkey(String vkey);
 
     List<Bnkseek> findByRgn(String rgn);
 
@@ -19,9 +19,17 @@ public interface BnkseekService {
 
     void delete(String vkey);
 
-    void uploadFile(File uploadFile);
-
-    Bnkseek getByVkey(String vkey);
+    void uploadFile(MultipartFile uploadFile);
 
     void editBnkseek(Bnkseek bnkseek, String vkey);
+
+    List<Pzn> getPZN();
+
+    List<Reg> getREG();
+
+    List<Tnp> getTNP();
+
+    List<Uer> getUER();
+
+    List<Bnkseek> findByNewnum(String newnum);
 }

@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+.c-fix-tab {
+  position: fixed;
+  z-index: 99;
+  bottom: 28px;
+  right: 28px;
+}
+
+select {
+  display: inline;
+}
+
+.btn-search {
+
+  right: 20px;
+}
+
+.btn-upload {
+  bottom: 47px;
+}

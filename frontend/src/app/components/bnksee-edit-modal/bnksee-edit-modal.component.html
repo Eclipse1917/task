@@ -1,0 +1,205 @@
+<div id="bnkseekEditModal" class="modal">
+  <div class="modal-content">
+    <h4>More details</h4>
+    <div class="col s12 m6 center">
+      <div class="card white">
+        <div class="card-content black-text">
+          <div class="row">
+            <form class="col s12" #bnkseekEditForm="ngForm">
+              <div class="input-field col s12">
+                <i class="material-icons"></i>
+                <input placeholder="REAL" id="REAL" name="REAL" type="text" maxlength="4"
+                       [(ngModel)]="fullBnkSeek.real">
+                <label for="REAL">REAL</label>
+              </div>
+              <div>
+                <i class="material-icons "></i>
+                <label class="select-label" for="PZN">PZN</label>
+                <select id="PZN" name="PZN" [(ngModel)]="fullBnkSeek.pzn">
+                  <option *ngFor="let p of pzn" [value]="p.pzn">{{p.name}}</option>
+                </select>
+              </div>
+              <div>
+                <i class="material-icons "></i>
+                <label class="select-label" for="UER">UER</label>
+                <select id="UER" name="UER" [(ngModel)]="fullBnkSeek.uer" required>
+                  <option *ngFor="let u of uer" [value]="u.uer">{{u.uerName}}</option>
+                </select>
+              </div>
+              <div>
+                <i class="material-icons "></i>
+                <label class="select-label" for="RGN">RGN</label>
+                <select id="RGN" name="RGN" [(ngModel)]="fullBnkSeek.rgn" required>
+                  <option *ngFor="let r of reg" [value]="r.rgn">{{r.name}}</option>
+                </select>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="IND" id="IND" name="IND" type="text" maxlength="6"
+                       [(ngModel)]="fullBnkSeek.ind">
+                <label for="IND">IND</label>
+              </div>
+              <div>
+                <i class="material-icons "></i>
+                <label class="select-label" for="TNP">TNP</label>
+                <select id="TNP" name="TNP" [(ngModel)]="fullBnkSeek.tnp">
+                  <option *ngFor="let t of tnp" [value]="t.tnp">{{t.fullName}}</option>
+                </select>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="NNP" id="NNP" name="NNP" type="text" maxlength="25"
+                       [(ngModel)]="fullBnkSeek.nnp">
+                <label for="NNP">NNP</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="ADR" id="ADR" name="ADR" type="text" maxlength="30"
+                       [(ngModel)]="fullBnkSeek.adr">
+                <label for="ADR">ADR</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="RKC" id="RKC" name="RKC" type="text" maxlength="9"
+                       [(ngModel)]="fullBnkSeek.rkc">
+                <label for="RKC">RKC</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="NAMEP" id="NAMEP" name="NAMEP" type="text" required maxlength="45"
+                       #NAMEP="ngModel"
+                       [(ngModel)]="fullBnkSeek.namep"
+                       [class.valid]="NAMEP.valid && (NAMEP.dirty || NAMEP.touched)"
+                       [class.invalid]="NAMEP.invalid && (NAMEP.dirty || NAMEP.touched)">
+                <label for="NAMEP">NAMEP</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="NAMEN" id="NAMEN" name="NAMEN" type="text" required maxlength="30"
+                       #NAMEN="ngModel"
+                       [(ngModel)]="fullBnkSeek.namen"
+                       [class.valid]="NAMEN.valid && (NAMEN.dirty || NAMEN.touched)"
+                       [class.invalid]="NAMEN.invalid && (NAMEN.dirty || NAMEN.touched)">
+                <label for="NAMEN">NAMEN</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="NEWKS" id="NEWKS" name="NEWKS" type="text" maxlength="9"
+                       [(ngModel)]="fullBnkSeek.newks">
+                <label for="NEWKS">NEWKS</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="PERMFO" id="PERMFO" name="PERMFO" type="text" maxlength="6"
+                       [(ngModel)]="fullBnkSeek.permfo">
+                <label for="PERMFO">PERMFO</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="SROK" id="SROK" name="SROK" type="text" required maxlength="2"
+                       #SROK="ngModel"
+                       [(ngModel)]="fullBnkSeek.srok"
+                       [class.valid]="SROK.valid && (SROK.dirty || SROK.touched)"
+                       [class.invalid]="SROK.invalid && (SROK.dirty || SROK.touched)">
+                <label for="SROK">SROK</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="AT1" id="AT1" name="AT1" type="text" maxlength="7"
+                       [(ngModel)]="fullBnkSeek.at1">
+                <label for="AT1">AT1</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="AT2" id="AT2" name="AT2" type="text" maxlength="7"
+                       [(ngModel)]="fullBnkSeek.at2">
+                <label for="AT2">AT2</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="TELEF" id="TELEF" name="TELEF" type="text" maxlength="25"
+                       [(ngModel)]="fullBnkSeek.telef">
+                <label for="TELEF">TELEF</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="REGN" id="REGN" name="REGN" type="text" maxlength="9"
+                       [(ngModel)]="fullBnkSeek.regn">
+                <label for="REGN">REGN</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="OKPO" id="OKPO" name="OKPO" type="text" maxlength="8"
+                       [(ngModel)]="fullBnkSeek.okpo">
+                <label for="OKPO">OKPO</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="DT_IZM" id="DT_IZM" name="DT_IZM" type="date" required disabled
+                       [(ngModel)]="fullBnkSeek.dtIzm">
+                <label for="DT_IZM">DT_IZM</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="CKS" id="CKS" name="CKS" type="text" maxlength="6"
+                       [(ngModel)]="fullBnkSeek.cks">
+                <label for="CKS">CKS</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="KSNP" id="KSNP" name="KSNP" type="text" maxlength="20"
+                       [(ngModel)]="fullBnkSeek.ksnp">
+                <label for="KSNP">KSNP</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="DATE_IN" id="DATE_IN" name="DATE_IN" type="date" disabled
+                       [(ngModel)]="fullBnkSeek.dateIn">
+                <label for="DATE_IN">DATE_IN</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="DATE_CH" id="DATE_CH" name="DATE_CH" type="date"
+                       [(ngModel)]="fullBnkSeek.dateCh">
+                <label for="DATE_CH">DATE_CH</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="VKEYDEL" id="VKEYDEL" name="VKEYDEL" type="text" maxlength="8"
+                       [(ngModel)]="fullBnkSeek.vkeydel">
+                <label for="VKEYDEL">VKEYDEL</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="DT_IZMR" id="DT_IZMR" name="DT_IZMR" type="date"
+                       [(ngModel)]="fullBnkSeek.dtIzmr">
+                <label for="DT_IZMR">DT_IZMR</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons "></i>
+                <input placeholder="NEWNUM" id="NEWNUM" name="NEWNUM" type="text" required maxlength="9"
+                       #NEWNUM="ngModel"
+                       [(ngModel)]="fullBnkSeek.newnum"
+                       [class.valid]="NEWNUM.valid && (NEWNUM.dirty || NEWNUM.touched)"
+                       [class.invalid]="NEWNUM.invalid && (NEWNUM.dirty || NEWNUM.touched)">
+                <label for="NEWNUM">NEWNUM</label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="delete" class="modal-action waves-effect waves-green btn-flat"
+              (click)="modalRemove.onRemove(fullBnkSeek)">Delete
+      </button>
+      <button class="modal-action waves-effect waves-green btn-flat" (click)="onCancel()">Cancel</button>
+      <button class="modal-action waves-effect waves-green btn-flat" (click)="onSave()"
+              [disabled]="bnkseekEditForm.form.invalid">Save
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-bnksee-remove-modal #modalRemove (delete)="onCancel()"></app-bnksee-remove-modal>
+

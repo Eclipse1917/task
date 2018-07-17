@@ -20,9 +20,11 @@ public class Bnkseek {
     private String vkey;
     @JsonView(View.FullBnkseek.class)
     private String real;
+    @JsonView(View.FullBnkseek.class)
     private String pzn;
     @JsonView(View.FullBnkseek.class)
     private String uer;
+    @JsonView(View.FullBnkseek.class)
     private String rgn;
     @JsonView(View.FullBnkseek.class)
     private String ind;
@@ -33,7 +35,6 @@ public class Bnkseek {
     private String adr;
     @JsonView(View.FullBnkseek.class)
     private String rkc;
-    @JsonView(View.FullBnkseek.class)
     private String namep;
     @JsonView(View.FullBnkseek.class)
     private String namen;
@@ -57,7 +58,7 @@ public class Bnkseek {
     @JsonView(View.FullBnkseek.class)
     private String cks;
     @JsonView(View.FullBnkseek.class)
-    private String kznp;
+    private String ksnp;
     @JsonView(View.FullBnkseek.class)
     private Date dateIn;
     @JsonView(View.FullBnkseek.class)

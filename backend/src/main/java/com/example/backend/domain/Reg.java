@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reg {
-    private String vkey;
     private String rgn;
     private String name;
 
